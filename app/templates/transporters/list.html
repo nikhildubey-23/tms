@@ -8,21 +8,22 @@
     <a href="{{ url_for('transporters.add') }}" class="btn btn-primary"><i class="bi bi-person-plus me-1"></i> Add Transporter</a>
 </div>
 
-<div class="card">
-    <div class="card-body">
-        <form method="GET" class="row g-2 mb-3">
-            <div class="col-auto flex-grow-1">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input type="text" name="search" class="form-control" placeholder="Search by name..." value="{{ search }}">
-                </div>
+<div class="filter-card">
+    <form method="GET" class="row g-2 align-items-end">
+        <div class="col flex-grow-1">
+            <label class="form-label small mb-1">Search</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="text" name="search" class="form-control" placeholder="Search by name..." value="{{ search }}">
             </div>
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-search me-1"></i> Search</button>
-            </div>
-        </form>
-        <div class="table-responsive">
-            <table class="table">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-search me-1"></i> Search</button>
+        </div>
+    </form>
+</div>
+<div class="table-wrap">
+    <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -57,8 +58,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-    </div>
 </div>
 
 {% include "_pagination.html" %}

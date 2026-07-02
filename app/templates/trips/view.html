@@ -55,7 +55,7 @@
                 <span><i class="bi bi-receipt me-1"></i> Expenses</span>
                 <a href="{{ url_for('expenses.add', trip_id=trip.id) }}" class="btn btn-sm btn-primary"><i class="bi bi-plus me-1"></i> Add</a>
             </div>
-            <div class="card-body p-0">
+            <div class="table-wrap">
                 <table class="table">
                     <thead>
                         <tr>
@@ -94,7 +94,7 @@
                 <span><i class="bi bi-credit-card-2-front me-1"></i> Payments</span>
                 <a href="{{ url_for('payments.add', trip_id=trip.id) }}" class="btn btn-sm btn-primary"><i class="bi bi-plus me-1"></i> Add</a>
             </div>
-            <div class="card-body p-0">
+            <div class="table-wrap">
                 <table class="table">
                     <thead>
                         <tr>

@@ -8,28 +8,28 @@
 <div class="row g-3 mb-4">
     <div class="col-xl-3 col-md-6">
         <div class="summary-card card-primary">
-            <div class="icon"><i class="bi bi-cash-stack"></i></div>
+            <div class="icon-wrap"><i class="bi bi-cash-stack"></i></div>
             <div class="label">Total Freight</div>
             <div class="value">&#8377; {{ "%.2f"|format(total_freight) }}</div>
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
         <div class="summary-card card-success">
-            <div class="icon"><i class="bi bi-credit-card"></i></div>
+            <div class="icon-wrap"><i class="bi bi-credit-card"></i></div>
             <div class="label">Total Paid</div>
             <div class="value">&#8377; {{ "%.2f"|format(total_paid) }}</div>
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
         <div class="summary-card card-warning">
-            <div class="icon"><i class="bi bi-exclamation-triangle"></i></div>
+            <div class="icon-wrap"><i class="bi bi-exclamation-triangle"></i></div>
             <div class="label">Total Balance</div>
             <div class="value">&#8377; {{ "%.2f"|format(total_balance) }}</div>
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
         <div class="summary-card card-info">
-            <div class="icon"><i class="bi bi-clock"></i></div>
+            <div class="icon-wrap"><i class="bi bi-clock"></i></div>
             <div class="label">Pending Trips</div>
             <div class="value">{{ pending_trips }} <span style="font-size:.9rem;opacity:.7;">/ {{ total_trips }}</span></div>
         </div>
@@ -43,9 +43,8 @@
                 <span><i class="bi bi-journal me-1"></i> Recent Trips</span>
                 <a href="{{ url_for('trips.list') }}" class="btn btn-sm btn-primary">View All</a>
             </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table">
+            <div class="table-wrap">
+                <table class="table">
                         <thead>
                             <tr>
                                 <th>Date</th>
@@ -74,12 +73,11 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
         </div>
     </div>
     <div class="col-lg-5">
         <div class="card">
-            <div class="card-header"><i class="bi bi-lightning me-1"></i> Quick Actions</div>
+            <div class="card-header"><i class="bi bi-lightning-fill me-1"></i> Quick Actions</div>
             <div class="card-body">
                 <div class="d-grid gap-2">
                     <a href="{{ url_for('trips.add') }}" class="btn btn-primary"><i class="bi bi-plus-circle me-1"></i> New Trip</a>
@@ -89,11 +87,11 @@
             </div>
         </div>
         {% if total_balance > 0 %}
-        <div class="card border-warning">
-            <div class="card-body text-center py-3">
-                <i class="bi bi-bell" style="font-size:1.5rem;color:var(--warning);"></i>
-                <div class="mt-1" style="font-size:.85rem;color:var(--text-muted);">
-                    {{ pending_trips }} trip(s) pending with outstanding balance of <strong>&#8377; {{ "%.2f"|format(total_balance) }}</strong>
+        <div class="card" style="border-left: 4px solid var(--warning);">
+            <div class="card-body d-flex align-items-center gap-3 py-3">
+                <div style="font-size:1.8rem;color:var(--warning);"><i class="bi bi-bell"></i></div>
+                <div style="font-size:.85rem;color:var(--text-muted);">
+                    <strong>{{ pending_trips }}</strong> trip(s) pending with outstanding balance of <strong>&#8377; {{ "%.2f"|format(total_balance) }}</strong>
                 </div>
             </div>
         </div>

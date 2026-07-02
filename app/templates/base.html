@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="{{ url_for('main.dashboard') }}">
-                <i class="bi bi-truck"></i> TMS
+                <i class="bi bi-truck-front me-1"></i> <span>TMS</span> Transport
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -21,16 +21,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url_for('main.dashboard') }}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                        <a class="nav-link text-white" href="{{ url_for('main.dashboard') }}"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url_for('trips.list') }}"><i class="bi bi-journal"></i> Trips</a>
+                        <a class="nav-link text-white" href="{{ url_for('trips.list') }}"><i class="bi bi-journal me-1"></i> Trips</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url_for('transporters.list') }}"><i class="bi bi-people"></i> Transporters</a>
+                        <a class="nav-link text-white" href="{{ url_for('transporters.list') }}"><i class="bi bi-people me-1"></i> Transporters</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="{{ url_for('reports.index') }}"><i class="bi bi-bar-chart"></i> Reports</a>
+                        <a class="nav-link text-white" href="{{ url_for('reports.index') }}"><i class="bi bi-bar-chart me-1"></i> Reports</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto align-items-center">
