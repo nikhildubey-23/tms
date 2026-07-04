@@ -379,6 +379,8 @@ body::before {
 }
 
 /* ── Page Header ── */
+.plant-sidebar-item:hover { background: var(--primary-subtle); }
+.plant-sidebar-item:last-child > div { border-bottom: none !important; }
 .section-title {
     font-size: 1rem;
     font-weight: 700;
