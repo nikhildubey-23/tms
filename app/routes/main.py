@@ -21,20 +21,19 @@ def dashboard():
     plant_data = []
     for p in plants:
         pt = Trip.query.filter_by(plant_id=p.id).all()
-        if pt:
-            plant_data.append({
-                "name": p.name,
-                "count": len(pt),
-                "freight": sum(float(x.total_freight) for x in pt),
-                "tds": sum(float(x.tds_amount) for x in pt),
-                "expense": sum(float(x.total_expense) for x in pt),
-                "paid": sum(float(x.total_paid) for x in pt),
-                "balance": sum(float(x.balance) for x in pt),
-                "pending": sum(1 for x in pt if x.status == "Pending"),
-                "completed": sum(1 for x in pt if x.status == "Completed"),
-                "work_orders": sum(1 for x in pt if x.work_order_number),
-                "mines_qty": sum(float(x.mines_qty or 0) for x in pt),
-            })
+        plant_data.append({
+            "name": p.name,
+            "count": len(pt),
+            "freight": sum(float(x.total_freight) for x in pt),
+            "tds": sum(float(x.tds_amount) for x in pt),
+            "expense": sum(float(x.total_expense) for x in pt),
+            "paid": sum(float(x.total_paid) for x in pt),
+            "balance": sum(float(x.balance) for x in pt),
+            "pending": sum(1 for x in pt if x.status == "Pending"),
+            "completed": sum(1 for x in pt if x.status == "Completed"),
+            "work_orders": sum(1 for x in pt if x.work_order_number),
+            "mines_qty": sum(float(x.mines_qty or 0) for x in pt),
+        })
 
     return render_template(
         "dashboard.html",
