@@ -86,9 +86,9 @@
                     <thead>
                         <tr>
                             <th>Date</th>
-                            <th>Lorry</th>
-                            <th>Plant</th>
-                            <th>Transporter</th>
+                            <th>Truck</th>
+                            <th>Work Order</th>
+                            <th>Mines</th>
                             <th>Freight</th>
                             <th>Status</th>
                         </tr>
@@ -98,8 +98,8 @@
                         <tr>
                             <td>{{ t.date }}</td>
                             <td><strong>{{ t.lorry_number }}</strong></td>
-                            <td><span class="badge-method neft">{{ t.plant.name if t.plant else 'N/A' }}</span></td>
-                            <td>{{ t.transporter.name if t.transporter else 'N/A' }}</td>
+                            <td><code>{{ t.work_order_number or '-' }}</code></td>
+                            <td>{{ t.mines_name or '-' }}</td>
                             <td>&#8377; {{ "%.2f"|format(t.total_freight) }}</td>
                             <td>
                                 <span class="badge-status {{ 'completed' if t.status == 'Completed' else 'pending' }}">
@@ -109,7 +109,7 @@
                         </tr>
                         {% else %}
                         <tr><td colspan="6" class="empty-state"><div class="icon"><i class="bi bi-inbox"></i></div>No trips yet</td></tr>
-                        {% endfor %}
+{% endfor %}
                     </tbody>
                 </table>
             </div>

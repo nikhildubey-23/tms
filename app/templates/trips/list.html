@@ -19,8 +19,8 @@
             <input type="date" name="date_to" class="form-control" value="{{ date_to }}">
         </div>
         <div class="col-auto">
-            <label class="form-label small mb-1">Lorry</label>
-            <input type="text" name="lorry" class="form-control" placeholder="Lorry number" value="{{ lorry }}">
+            <label class="form-label small mb-1">Truck</label>
+            <input type="text" name="lorry" class="form-control" placeholder="Truck number" value="{{ lorry }}">
         </div>
         <div class="col-auto">
             <label class="form-label small mb-1">Plant</label>
@@ -51,7 +51,9 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Lorry</th>
+                        <th>Truck</th>
+                        <th>Work Order</th>
+                        <th>Mines</th>
                         <th>Plant</th>
                         <th>Transporter</th>
                         <th class="text-end">Freight</th>
@@ -68,6 +70,8 @@
                     <tr>
                         <td>{{ t.date }}</td>
                         <td><strong>{{ t.lorry_number }}</strong></td>
+                        <td><code>{{ t.work_order_number or '-' }}</code></td>
+                        <td>{{ t.mines_name or '-' }}</td>
                         <td><span class="badge-method neft">{{ t.plant.name if t.plant else 'N/A' }}</span></td>
                         <td>{{ t.transporter.name if t.transporter else 'N/A' }}</td>
                         <td class="text-end">&#8377; {{ "%.2f"|format(t.total_freight) }}</td>
@@ -91,7 +95,7 @@
                         </td>
                     </tr>
                     {% else %}
-                    <tr><td colspan="11" class="empty-state"><div class="icon"><i class="bi bi-inbox"></i></div>No trips found</td></tr>
+                    <tr><td colspan="13" class="empty-state"><div class="icon"><i class="bi bi-inbox"></i></div>No trips found</td></tr>
                     {% endfor %}
                 </tbody>
             </table>

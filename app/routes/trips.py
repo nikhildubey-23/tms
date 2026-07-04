@@ -68,11 +68,15 @@ def add():
                 flash("A trip already exists for this lorry on this date", "danger")
                 return render_template("trips/form.html", trip=None, transporters=transporters, plants=plants)
 
+            mines_qty = request.form.get("mines_qty", "").strip()
             trip = Trip(
                 date=trip_date,
                 lorry_number=lorry_number,
                 transporter_id=int(transporter_id),
                 plant_id=int(plant_id) if plant_id else None,
+                work_order_number=request.form.get("work_order_number", "").strip(),
+                mines_name=request.form.get("mines_name", "").strip(),
+                mines_qty=float(mines_qty) if mines_qty else None,
                 total_freight=total_freight,
                 tds_percent=tds_percent,
                 remarks=request.form.get("remarks", "").strip(),
@@ -119,10 +123,14 @@ def edit(id):
                 flash("A trip already exists for this lorry on this date", "danger")
                 return render_template("trips/form.html", trip=trip, transporters=transporters, plants=plants)
 
+            mines_qty = request.form.get("mines_qty", "").strip()
             trip.date = trip_date
             trip.lorry_number = lorry_number
             trip.transporter_id = int(transporter_id)
             trip.plant_id = int(plant_id) if plant_id else None
+            trip.work_order_number = request.form.get("work_order_number", "").strip()
+            trip.mines_name = request.form.get("mines_name", "").strip()
+            trip.mines_qty = float(mines_qty) if mines_qty else None
             trip.total_freight = total_freight
             trip.tds_percent = tds_percent
             trip.remarks = request.form.get("remarks", "").strip()

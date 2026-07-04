@@ -63,6 +63,9 @@ class Trip(db.Model):
     total_expense = db.Column(db.Numeric(12, 2), nullable=False, default=0.00)
     total_paid = db.Column(db.Numeric(12, 2), nullable=False, default=0.00)
     balance = db.Column(db.Numeric(12, 2), nullable=False, default=0.00)
+    work_order_number = db.Column(db.String(100), nullable=True, index=True)
+    mines_name = db.Column(db.String(200), nullable=True)
+    mines_qty = db.Column(db.Numeric(12, 2), nullable=True, default=0.00)
     status = db.Column(db.String(20), nullable=False, default="Pending")
     remarks = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -96,6 +99,9 @@ class Trip(db.Model):
             "total_expense": float(self.total_expense),
             "total_paid": float(self.total_paid),
             "balance": float(self.balance),
+            "work_order_number": self.work_order_number,
+            "mines_name": self.mines_name,
+            "mines_qty": float(self.mines_qty) if self.mines_qty else 0,
             "status": self.status,
             "remarks": self.remarks,
         }

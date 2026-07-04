@@ -17,7 +17,7 @@
                             <input type="date" name="date" class="form-control" value="{{ trip.date if trip else '' }}" required>
                         </div>
                         <div class="col-md-3">
-                            <label class="form-label">Lorry Number <span class="text-danger">*</span></label>
+                            <label class="form-label">Truck Number <span class="text-danger">*</span></label>
                             <input type="text" name="lorry_number" class="form-control" value="{{ trip.lorry_number if trip else '' }}" placeholder="e.g. KA01AB1234" required>
                         </div>
                         <div class="col-md-3">
@@ -39,6 +39,21 @@
                             </select>
                         </div>
                         <div class="col-md-4">
+                            <label class="form-label">Work Order Number</label>
+                            <input type="text" name="work_order_number" class="form-control" value="{{ trip.work_order_number if trip else '' }}" placeholder="e.g. WO-2024-001">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Mines Name</label>
+                            <input type="text" name="mines_name" class="form-control" value="{{ trip.mines_name if trip else '' }}" placeholder="e.g. Jindal Mine">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Mines Qty (Tonnes)</label>
+                            <div class="input-group">
+                                <input type="number" step="0.01" min="0" name="mines_qty" class="form-control" value="{{ trip.mines_qty if trip else '' }}" placeholder="0.00">
+                                <span class="input-group-text">T</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <label class="form-label">Total Freight (&#8377;) <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text">&#8377;</span>
@@ -53,7 +68,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label">Remarks</label>
+                            <label class="form-label">Remark</label>
                             <textarea name="remarks" class="form-control" rows="1" placeholder="Optional notes">{{ trip.remarks if trip else '' }}</textarea>
                         </div>
                     </div>

@@ -27,11 +27,14 @@ def trip_wise():
     trips = query.order_by(Trip.date.desc()).all()
 
     if request.args.get("export") == "csv":
-        headers = ["Date", "Lorry", "Plant", "Transporter", "Freight", "TDS%", "TDS Amt", "Expense", "Paid", "Balance", "Status"]
+        headers = ["Date", "Truck", "Work Order", "Mines Name", "Mines Qty", "Plant", "Transporter", "Freight", "TDS%", "TDS Amt", "Expense", "Paid", "Balance", "Status"]
         rows = [
             [
                 t.date,
                 t.lorry_number,
+                t.work_order_number or "",
+                t.mines_name or "",
+                float(t.mines_qty) if t.mines_qty else "",
                 t.plant.name if t.plant else "",
                 t.transporter.name if t.transporter else "",
                 float(t.total_freight),
@@ -188,7 +191,7 @@ def plant_wise():
         })
 
     if request.args.get("export") == "csv":
-        headers = ["Plant", "Lorry", "Date", "Transporter", "Freight", "TDS%", "TDS Amt", "Expense", "Paid", "Balance", "Status"]
+        headers = ["Plant", "Truck", "Work Order", "Mines Name", "Mines Qty", "Date", "Transporter", "Freight", "TDS%", "TDS Amt", "Expense", "Paid", "Balance", "Status"]
         rows = []
         for h in hierarchy:
             for l in h["lorries"]:
@@ -196,6 +199,9 @@ def plant_wise():
                     rows.append([
                         h["plant"].name,
                         l["lorry"],
+                        t.work_order_number or "",
+                        t.mines_name or "",
+                        float(t.mines_qty) if t.mines_qty else "",
                         t.date,
                         t.transporter.name if t.transporter else "",
                         float(t.total_freight),
